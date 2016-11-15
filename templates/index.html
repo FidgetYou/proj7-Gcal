@@ -53,6 +53,54 @@
   {% endif %}
 {% endwith %}
 
+<h2>Time Start</h2>
+  <form action="/setrange" method="post">
+  <input type="text" name="timestart" size="12"
+    {% if session.timerange is defined %}
+         value="{{session.timestart}}"
+    {% endif %}
+     class="pull-down"
+     style="background: #fff; cursor: pointer; padding: 5px 10px;
+     border: 1px solid #ccc; width: 12em" >
+  <script type="text/javascript">
+  $(function() {
+  $('input[name="timestart"]').timerangepicker(
+    {    ranges: {
+           'Now': [moment(), moment()],
+           'Later':[moment().add(1, 'hours'),
+                       moment().add(1, 'hours')], 
+           'In A While':[moment().add(7, 'hours').startOf('day'),
+                        moment().add(7, 'hours').endOf('day')],
+           'Much Later':[moment(),moment().add(15, 'hours')]
+        }}
+       );
+    });
+  </script>
+
+<h2>Time End</h2>
+  <form action="/setrange" method="post">
+  <input type="text" name="timeend" size="12"
+    {% if session.timerange is defined %}
+         value="{{session.timeend}}"
+    {% endif %}
+     class="pull-down"
+     style="background: #fff; cursor: pointer; padding: 5px 10px;
+     border: 1px solid #ccc; width: 12em" >
+  <script type="text/javascript">
+  $(function() {
+  $('input[name="timeend"]').timerangepicker(
+    {    ranges: {
+           'Now': [moment(), moment()],
+           'Later':[moment().add(1, 'hours'),
+                       moment().add(1, 'hours')], 
+           'In A While':[moment().add(7, 'hours').startOf('day'),
+                        moment().add(7, 'hours').endOf('day')],
+           'Much Later':[moment(),moment().add(15, 'hours')]
+        }}
+       );
+    });
+  </script>
+
 <h2>Date range</h2>
   <form action="/setrange" method="post">
   <input type="text" name="daterange" size="12"
